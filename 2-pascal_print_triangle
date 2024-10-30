@@ -1,0 +1,33 @@
+//Given the number of rows n. Print the first n rows of Pascal’s triangle.
+
+#include <stdio.h>
+
+void print_triangle(int n) 
+{
+    for (int r = 0; r < n; r++) 
+{
+        int  value = 1;  // First element of every row is 1
+        //remianing rows-
+        for (int k = 0; k <= r; k++) 
+       {
+            printf("%d ", value);
+            // Calculate next value using (nCr+1 = nCr * (r - k) / (k + 1))
+            value = value * (r - k) / (k + 1);
+        }
+        printf("\n");
+    }
+}
+
+int main()
+{
+    int n;
+
+    // Input the number of rows
+    printf("Enter the number of rows: ");
+    scanf("%d", &n);
+
+    // Print the first n rows of Pascal's Triangle
+    print_triangle(n);
+
+    return 0;
+}
