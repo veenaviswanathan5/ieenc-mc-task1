@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+// Function to calculate factorial
+ int factorial(int n) {
+    if (n == 0 || n == 1) return 1;
+     int result = 1;
+    for (int i = 2; i <= n; i++) {
+        result *= i;
+    }
+    return result;
+}
+
+// Function to calculate binomial coefficient (n choose k)
+ int row_col(int r, int c) {
+    return factorial(r) / (factorial(c) * factorial(r - c));
+}
+
+int main() {
+    int r, c;
+
+    // Input row and column number
+    printf("Enter the row number (r): ");
+    scanf("%d", &r);
+    printf("Enter the column number (c): ");
+    scanf("%d", &c);
+
+    // Check for valid input-for the formual of element 
+    if (c > r || r < 0 || c < 0) {
+        printf("Invalid input. Column number cannot be greater than the row number.\n");
+        return 1;
+    }
+
+    // Print the element at (r, c)
+    printf("Element at (%d, %d) in Pascal's triangle matrix: %d\n", r, c, row_col(r, c));
+
+    return 0;
+}
