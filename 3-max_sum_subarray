@@ -1,0 +1,57 @@
+#include <stdio.h>
+
+void maxSubarray(int arr[], int n) 
+{
+    int maxSum = arr[0];  // Initialize maxSum to the first element
+    int Sum = 0;
+
+    int start = 0, end = 0, tempStart = 0;// start value changes
+
+    for (int i = 0; i < n; i++) 
+    {
+        Sum += arr[i];
+
+        if (Sum > maxSum) {
+            maxSum = Sum;
+            start = tempStart;  // Update start of the max subarray
+            end = i;            // Update end of the max subarray
+        }
+
+        if (Sum < 0) {
+            Sum = 0;     // Reset the current sum
+            tempStart = i + 1;  // Start a new subarray
+        }
+    }
+
+    // Print the maximum sum
+    printf("Maximum sum: %d\n", maxSum);
+
+    // Print the subarray with the maximum sum
+    printf("Subarray: ");
+    for (int i = start; i <= end; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+int main() 
+{
+    int n;
+
+    // Input the size of the array
+    printf("Enter the size of the array: ");
+    scanf("%d", &n);
+
+    int arr[n];
+
+    // Input the elements of the array
+    printf("Enter the elements of the array: ");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Find and print the maximum subarray sum and the subarray
+    maxSubarray(arr, n);
+
+    return 0;
+}
